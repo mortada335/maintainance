@@ -1,31 +1,54 @@
 <template>
-  <div>
-    <div class="grid grid-cols-3 gap-3 max-w-[950px] px-5 py-5">
-      <div>
-        <span class="px-5 py-3">Reference</span>
-        <v-text-field label="Enter Order Reference" type="input"></v-text-field>
-      </div>
-      <div>
-        <span class="px-5 py-3">Status</span>
-        <v-select label="Select status"></v-select>
-      </div>
-      <div>
-        <span class="px-5 py-3">Date Generated</span>
-        <v-text-field clearable label="15/12/2021" append-icon="mdi-calendar" type="text"></v-text-field>
-      </div>
-      <div>
-        <span class="px-5 py-3">Quantity</span>
-        <v-text-field label="Enter Quantity" type="input"></v-text-field>
-      </div>
-    </div>
+  <div id="app">
+    <v-responsive class="grid grid-cols-3 gap-3 px-5 py-5">
+      <v-form>
+        <v-row>
+          <v-col cols="5">
+            <span class="px-5 py-3 text-sm">Reference</span>
+            <v-text-field variant="outlined" required label="Enter Order Reference" type="input"></v-text-field>
+          </v-col>
+          <v-col cols="5">
+            <span class="px-5 py-3 text-xs">Date Generated</span>
+            <v-text-field variant="outlined" clearable label="15/12/2021" append-icon="mdi-calendar"
+              type="text"></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="5">
+            <span class="px-5 py-3 text-sm">Status</span>
+            <v-select variant="outlined" :items="items" label="Select status"></v-select>
+          </v-col>
+          <v-col cols="5">
+            <span class="px-5 py-3 text-sm">Quantity</span>
+            <v-text-field variant="outlined" label="Enter Quantity" type="input"></v-text-field>
+          </v-col>
+        </v-row>
+      </v-form>
 
-    <v-card class="pa-4">
-      <div class="mb-1 flex justify-between items-center">
-        <v-card-title class="text-3xl text-blue-500">Manufacturing Orders</v-card-title>
-        <v-btn variant="outlined" height="35" class="hover:bg-blue-100 hover:text-white border-none">
-          <router-link class="text-blue-400" to="/newMaintainance">New Manufacturing Order</router-link>
-        </v-btn>
-      </div>
+    </v-responsive>
+
+    <!-- 
+       </div>
+      <div>
+        </div>} -->
+
+    <v-card class="pa-1">
+      <v-card-title>
+        <v-row>
+          <v-col cols="4">
+            <h1 class="text-base text-blue-900">Manufacturing Orders</h1>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            <v-btn size="small" variant="outlined" link to="/newMaintainance" height="35" color="blue-lighten-3"
+              class=" border-none mt-[-8px]">
+              New Manufacturing Order
+            </v-btn>
+          </v-col>
+        </v-row>
+
+
+      </v-card-title>
       <v-data-table hide-default-footer="true" :headers="headers.text" :items="plants" density="compact"
         item-key="name"></v-data-table>
     </v-card>
@@ -55,6 +78,7 @@ const plants = [
   { name: "Aloe Vera", light: "Bright, direct", height: "30cm", petFriendly: "Yes", price: 15 },
   { name: "Jade Plant", light: "Bright, direct", height: "40cm", petFriendly: "Yes", price: 25 },
 ];
+const items = ['completed', 'waiting']
 </script>
 
 <style scoped></style>

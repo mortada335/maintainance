@@ -11,27 +11,53 @@
         </v-app-bar>
 
         <v-container>
-            <v-app-bar class="px-3 " flat>
-                <div class="text-white flex flex-row gap-3 ">
-                    <v-btn link to="/thirdMaintainance" class="bg-blue-300" variant="solo-filled" flat
-                        hide-details>Produce All</v-btn>
-                    <v-btn class="bg-gray-300" variant="solo-filled" flat hide-details>Cancel</v-btn>
-                    <v-btn class="bg-gray-300" flat hide-details variant="solo-filled">Print Labels</v-btn>
-                </div>
-                <v-spacer></v-spacer>
+            <v-app-bar class="pa-3 " flat>
+                <v-app-bar-title>
+                    <v-responsive>
+                        <v-row>
+                            <v-col cols="8" class="">
+                                <v-btn-group class="gap-1 pa-0">
+                                    <!-- <v-spacer></v-spacer> -->
 
-                <div class="flex flex-row space-x-2">
-                    <v-btn disabled class="rounded-xl bg-slate-50 font-bold " dark>Draft</v-btn>
-                    <v-btn disabled class="rounded-xl font-bold bg-slate-50 " color="blue" dark>Confirmed</v-btn>
-                    <v-btn disabled class="rounded-xl font-bold bg-slate-50 " dark>Done</v-btn>
-                </div>
-                <v-spacer></v-spacer>
-                <div class="gap-3 flex flex-row">
-                    <v-btn class="bg-blue text-white" variant="solo-filled" size="small" flat hide-details>Send
-                        Message</v-btn>
-                    <v-btn class="bg-gray-300 text-white" size="small" variant="solo-filled" flat hide-details>Log
-                        Note</v-btn>
-                </div>
+                                    <v-btn max-width="100" size="small" link to="/thirdMaintainance"
+                                        class="bg-blue-300 text-white" variant="solo-filled" flat>
+                                        <h1>Produce</h1>
+                                        <h1 class="text-center">All</h1>
+                                    </v-btn>
+                                    <v-btn size="small" class="bg-gray-300 text-white" variant="solo-filled" flat
+                                        hide-details>Cancel</v-btn>
+                                    <v-btn class="bg-gray-300 text-white" hide-details size="small"
+                                        variant="solo-filled">Print
+                                        Labels</v-btn>
+                                </v-btn-group>
+                                <!-- <v-spacer></v-spacer> -->
+
+
+                            </v-col>
+                            <!-- <v-spacer></v-spacer> -->
+                            <v-col cols="4">
+                                <v-btn variant="solo-filled" size="x-small" disabled
+                                    class="rounded-xl bg-slate-50 font-bold " dark>Draft</v-btn>
+                                <v-btn variant="solo-filled" size="x-small" disabled
+                                    class="rounded-xl font-bold bg-slate-50 " color="blue" dark>Confirmed</v-btn>
+                                <v-btn variant="solo-filled" size="x-small" disabled
+                                    class="rounded-xl font-bold bg-slate-50 " dark>Done</v-btn></v-col>
+
+
+                        </v-row>
+                        <!-- <v-row>  -->
+                    </v-responsive>
+
+                    <!-- </v-row> -->
+                </v-app-bar-title>
+                <!-- <v-spacer></v-spacer> -->
+
+                <!-- <div class="flex flex-row space-x-2"> -->
+                <!-- </div> -->
+                <!-- <v-spacer></v-spacer> -->
+
+                <!-- <div class="gap-3 flex flex-row"> -->
+                <!-- </div> -->
             </v-app-bar>
         </v-container>
 
@@ -112,6 +138,7 @@
                     <v-divider></v-divider>
 
                     <v-list-item>
+
                         <v-list-item-content>
                             <v-row>
                                 <v-col cols="4"><strong>Product</strong></v-col>
@@ -153,6 +180,14 @@
         <v-navigation-drawer location="right" class="pa-0 ma-2">
             <v-list>
                 <v-list-item>
+                    <v-list-item-title class="pb-4">
+                        <v-btn class="bg-blue text-white" variant="solo-filled" size="small" flat hide-details>Send
+                            Message</v-btn>
+                        <v-btn class="bg-gray-300 text-white" size="small" variant="solo-filled" flat hide-details>Log
+                            Note</v-btn>
+
+                    </v-list-item-title>
+
                     <v-list-item-content>
                         <v-list-item-title class="flex flex-row gap-1 items-center">
                             <v-chip color="red darken-1" variant="flat" rounded="sm" class="pa-0">
