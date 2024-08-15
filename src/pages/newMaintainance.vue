@@ -33,28 +33,32 @@
                   <v-row>
                     <v-col cols="6">
                       <span class="px-5 py-3 text-sm">Product</span>
-                      <v-text-field variant="outlined" required label="Enter Order Product" type="input"></v-text-field>
+                      <v-text-field variant="outlined" required label="Enter Order Product" :rules="rules"
+                        type="input"></v-text-field>
                     </v-col>
                     <v-col cols="6">
                       <span class="px-5 py-3 text-xs">Date Generated</span>
-                      <v-text-field variant="outlined" clearable required label="15/12/2021"
+                      <v-text-field variant="outlined" clearable required :rules="rules" label="15/12/2021"
                         append-inner-icon="mdi-calendar" type="text"></v-text-field>
                     </v-col>
                   </v-row>
                   <v-row>
                     <v-col cols="6">
                       <span class="px-5 py-3 text-sm">Status</span>
-                      <v-select variant="outlined" :items="items" label="Select status"></v-select>
+                      <v-select required :rules="rules" variant="outlined" :items="options"
+                        label="Select status"></v-select>
                     </v-col>
                     <v-col cols="6">
                       <span class="px-5 py-3 text-sm">Quantity</span>
-                      <v-text-field variant="outlined" label="Enter Quantity" type="input"></v-text-field>
+                      <v-text-field :rules="rules" required variant="outlined" label="Enter Quantity"
+                        type="input"></v-text-field>
                     </v-col>
                   </v-row>
                   <v-row>
                     <v-col cols="6">
                       <span class="px-5 py-3">Bill of Material</span>
-                      <v-select variant="outlined" label="Enter the Bill of Material" rounded="lg"></v-select>
+                      <v-select required :rules="rules" :items="options" variant="outlined"
+                        label="Enter the Bill of Material" rounded="lg"></v-select>
                     </v-col>
                     <v-col cols="6" class="flex justify-end">
                       <v-btn block type="submit" size="large" color="primary" class="mt-7" to='/secondMaintainance'>
@@ -89,15 +93,21 @@
   </v-app>
 </template>
 <script setup>
-// import { ref } from "vue";
 import "../assets/tailwind.css";
+// import { ref } from "vue";
 // // import { useRouter } from "vue-router";
 
 // // const router = useRouter();
 // // const goBack = () => {
 // //   router.go(-1);
 // // }
+const rules = [
+  value => {
+    if (value) return true
 
+    return 'You must enter a valid data to proceed.'
+  },
+]
 const headers = [
   { text: "Reference", value: "reference" },
   { text: "Status", value: "status" },
@@ -118,6 +128,7 @@ const items = [
     quantity: 5,
   },
 ];
+const options = ['Pending', 'Completed', 'Draft']
 </script>
 
 <style scoped></style>

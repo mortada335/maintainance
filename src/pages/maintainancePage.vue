@@ -5,22 +5,23 @@
         <v-row>
           <v-col cols="5">
             <span class="px-5 py-3 text-sm">Reference</span>
-            <v-text-field variant="outlined" required label="Enter Order Reference" type="input"></v-text-field>
+            <v-text-field :rules="rules" variant="outlined" required label="Enter Order Reference"
+              type="input"></v-text-field>
           </v-col>
-          <v-col cols="5">
+          <v-col cols="6">
             <span class="px-5 py-3 text-xs">Date Generated</span>
-            <v-text-field variant="outlined" clearable label="15/12/2021" append-icon="mdi-calendar"
+            <v-text-field :rules="rules" variant="outlined" clearable label="15/12/2021" append-icon="mdi-calendar"
               type="text"></v-text-field>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="5">
             <span class="px-5 py-3 text-sm">Status</span>
-            <v-select variant="outlined" :items="items" label="Select status"></v-select>
+            <v-select :rules="rules" variant="outlined" :items="items" label="Select status"></v-select>
           </v-col>
           <v-col cols="5">
             <span class="px-5 py-3 text-sm">Quantity</span>
-            <v-text-field variant="outlined" label="Enter Quantity" type="input"></v-text-field>
+            <v-text-field :rules="rules" variant="outlined" label="Enter Quantity" type="input"></v-text-field>
           </v-col>
         </v-row>
       </v-form>
@@ -57,6 +58,13 @@
 
 <script setup>
 import "../assets/tailwind.css";
+const rules = [
+  value => {
+    if (value) return true
+
+    return 'You must enter a valid data to proceed.'
+  },
+]
 
 const headers = [
   { text: "Plant", align: "start", sortable: false, value: "name" },
